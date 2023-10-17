@@ -49,7 +49,7 @@ spring:
         
 # Database Settings
   datasource:
-    url: jdbc:postgresql://localhost:5432/feedapp
+    url: jdbc:postgresql://localhost:5432/weatherapp
     username: postgres
     password: pg123
     hikari:
@@ -103,7 +103,7 @@ spring:
   
 # Database Settings
   datasource:
-    url: jdbc:postgresql://localhost:5432/feedapp
+    url: jdbc:postgresql://localhost:5432/weatherapp
     username: postgres
     password: pg123
     hikari:
