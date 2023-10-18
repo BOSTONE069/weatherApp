@@ -1,4 +1,4 @@
-package com.bptn.weatherapp.exception;
+package com.bptn.weatherapp.exception.domain;
 
 public class EmailExistException extends RuntimeException {
 
