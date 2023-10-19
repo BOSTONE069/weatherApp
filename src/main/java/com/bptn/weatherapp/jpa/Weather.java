@@ -56,8 +56,12 @@ public class Weather implements Serializable {
 
     @Column(name = "\"updatedon\"")
     private Timestamp updatedOn;
+    
+    @Column(name = "\"visibility\"")
+    private BigDecimal visibility;
 
-    @Column(name = "\"weatherstatusid\"")
+    
+	@Column(name = "\"weatherstatusid\"")
     private Integer weatherStatusId;
 
     @Column(name = "\"winddirection\"")
@@ -240,11 +244,22 @@ public class Weather implements Serializable {
 	public Integer getWeatherStatusId() {
 		return weatherStatusId;
 	}
-
-
+	
 
 	public void setWeatherStatusId(Integer weatherStatusId) {
 		this.weatherStatusId = weatherStatusId;
+	}
+
+
+
+	public BigDecimal getVisibility() {
+		return visibility;
+	}
+
+
+
+	public void setVisibility(BigDecimal visibility) {
+		this.visibility = visibility;
 	}
 
 
@@ -298,11 +313,19 @@ public class Weather implements Serializable {
 
 
 	@Override
-    public String toString() {
-        return "Weather [weatherId=" + weatherId + ", cloudsAll=" + cloudsAll + ", description=" + description
-                + ", feelsLike=" + feelsLike + ", humidity=" + humidity + ", icon=" + icon + ", pressure=" + pressure
-                + ", sunrise=" + sunrise + ", sunset=" + sunset + ", temp=" + temp + ", tempMax=" + tempMax
-                + ", tempMin=" + tempMin + ", updatedOn=" + updatedOn + ", weatherStatusId=" + weatherStatusId
-                + ", windDirection=" + windDirection + ", windSpeed=" + windSpeed + "]";
-    }
+	public String toString() {
+		return "Weather [weatherId=" + weatherId + ", cloudsAll=" + cloudsAll + ", description=" + description
+				+ ", feelsLike=" + feelsLike + ", humidity=" + humidity + ", icon=" + icon + ", pressure=" + pressure
+				+ ", sunrise=" + sunrise + ", sunset=" + sunset + ", temp=" + temp + ", tempMax=" + tempMax
+				+ ", tempMin=" + tempMin + ", updatedOn=" + updatedOn + ", visibility=" + visibility
+				+ ", weatherStatusId=" + weatherStatusId + ", windDirection=" + windDirection + ", windSpeed="
+				+ windSpeed + "]";
+	}
+
+	
+	
+
+
+
+	
 }
