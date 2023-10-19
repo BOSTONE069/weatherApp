@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bptn.weatherapp.jpa.User;
 import com.bptn.weatherapp.service.UserService;
+import com.fasterxml.jackson.databind.JsonNode;
 
 
 
@@ -66,6 +67,14 @@ public class UserController {
 			logger.debug("Sending Reset Password Email, emailId: {}", emailId);
 			
 			this.userService.sendResetPasswordEmail(emailId);
+	}
+	
+	@PostMapping("/reset")
+	public void passwordReset(@RequestBody JsonNode json) {
+
+		logger.debug("Resetting Password, password: {}", json.get("password").asText());
+
+		this.userService.resetPassword(json.get("password").asText());
 	}
     
 }
