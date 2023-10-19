@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,6 +58,14 @@ public class UserController {
 		logger.debug("User Authenticated, username: {}", user.getUsername());
 			
 		return new ResponseEntity<>(user, jwtHeader, OK);
+	}
+	
+	@GetMapping("/reset/{emailId}")
+	public void sendResetPasswordEmail(@PathVariable String emailId) {
+			
+			logger.debug("Sending Reset Password Email, emailId: {}", emailId);
+			
+			this.userService.sendResetPasswordEmail(emailId);
 	}
     
 }
