@@ -242,5 +242,13 @@ public class UserControllerTest {
 		assertTrue(opt.isPresent(), "User Should Exist");
 
 	}
+	
+	@Test
+	@Order(8)
+	public void resetPasswordEmailIntegrationTest() throws Exception {
+	    mockMvc.perform(MockMvcRequestBuilders.get("/user/reset/{email}", this.user.getEmailId()))
+	           .andExpect(status().isOk());
+	}
+
 
 }
