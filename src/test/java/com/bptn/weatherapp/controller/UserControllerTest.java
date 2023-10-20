@@ -249,6 +249,30 @@ public class UserControllerTest {
 	    mockMvc.perform(MockMvcRequestBuilders.get("/user/reset/{email}", this.user.getEmailId()))
 	           .andExpect(status().isOk());
 	}
+	
+	@Test
+	@Order(9)
+	public void resetPasswordIntegrationTest() throws Exception {
+	    Optional<User> opt = this.userRepository.findByUsername(this.user.getUsername());
+	    assertTrue(opt.isPresent(), "User Should Exist");
+
+	    assertTrue(this.passwordEncoder.matches(this.user.getPassword(), opt.get().getPassword()));
+
+	    String jwt = String.format("Bearer %s", this.jwtService.generateJwtToken(this.user.getUsername(), 10_000));
+
+	    mockMvc.perform(MockMvcRequestBuilders.post("/user/reset")
+	            .param("newPassword", this.otherPassword)
+	            .header("Authorization", jwt))
+	           .andExpect(status().isOk());
+
+	    // Check if the user still exists
+	    opt = this.userRepository.findByUsername(this.user.getUsername());
+	    assertTrue(opt.isPresent(), "User Should Exist");
+
+	    assertTrue(this.passwordEncoder.matches(this.otherPassword, opt.get().getPassword()));
+	}
+
+	
 
 
 }
