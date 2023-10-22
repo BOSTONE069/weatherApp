@@ -248,7 +248,6 @@ public class UserControllerTest {
 	    mockMvc.perform(MockMvcRequestBuilders.get("/user/reset/{email}", this.user.getEmailId()))
 	           .andExpect(status().isOk());
 	}
-	
 
 
 }
